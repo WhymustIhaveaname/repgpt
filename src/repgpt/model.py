@@ -98,9 +98,8 @@ class Transformer(nn.Module):
         self.feed_forward = FeedForward(config.n_embd, config.dropout, config.bias)
 
     def forward(self, x):
-        x = -x + self.multi_headed_attention(self.layer_norm1(x))
-        x = -x + self.feed_forward(self.layer_norm2(x))
-        # input("neg attn ff?")
+        x = x + self.multi_headed_attention(self.layer_norm1(x))
+        x = x + self.feed_forward(self.layer_norm2(x))
         return x
 
 class GPT2(nn.Module):

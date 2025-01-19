@@ -1,0 +1,234 @@
+2025-01-19 16:49:26.022 | INFO     | __main__:<module>:63 - Got args Namespace(max_steps=20000, eval_interval=1000, eval_steps=100, batch_size=16, gradient_accum=32, model_size='124M', tensorboard=1)
+2025-01-19 16:49:26.022 | INFO     | __main__:<module>:88 - Training 124M model with config.n_layer=12, config.n_embd=768config.n_head=12, config.context_size=1024, config.dropout=0.0, config.vocab_size=50304
+2025-01-19 16:49:28.282 | DEBUG    | __main__:<module>:138 - ddp_rank=0 ddp_local_rank=0
+2025-01-19 16:49:28.282 | INFO     | __main__:<module>:152 - Training data is 9,035,582,489 tokens
+2025-01-19 16:49:28.282 | INFO     | __main__:<module>:153 - Evaluation data is 4,434,606 tokens
+2025-01-19 16:49:28.282 | INFO     | __main__:<module>:160 - job_name='gpt2-training-124M-2025-01-19-16-49-26'
+2025-01-19 16:49:28.282 | INFO     | __main__:<module>:161 - Tokens / step: 524,288
+2025-01-19 16:49:28.282 | INFO     | __main__:<module>:162 - Total training tokens: 10,485,760,000
+2025-01-19 16:49:28.282 | INFO     | __main__:<module>:163 - Effective batch size with grad accumulation: batch_size * gradient_accumulation_steps=512
+2025-01-19 16:49:28.283 | DEBUG    | __main__:<module>:164 - gradient_accumulation_steps_per_gpu=32
+2025-01-19 16:49:28.283 | DEBUG    | __main__:<module>:165 - Directories: train_dir='/home/v-youransun/repgpt/input/data/train', eval_dir='/home/v-youransun/repgpt/input/data/eval' model_dir='/home/v-youransun/repgpt/model' log_dir='/home/v-youransun/repgpt/output/tensorboard/nov/gpt2-training-124M-2025-01-19-16-49-26'
+2025-01-19 16:49:28.283 | INFO     | __main__:<module>:166 - Loaded dataset 2.261237859725952
+2025-01-19 16:49:31.612 | INFO     | __main__:<module>:200 - OptimizedModule(
+  (_orig_mod): DistributedDataParallel(
+    (module): GPT2(
+      (token_embedding_table): Embedding(50304, 768)
+      (position_embedding_table): Embedding(1024, 768)
+      (blocks): Sequential(
+        (0): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (1): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (2): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (3): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (4): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (5): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (6): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (7): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (8): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (9): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (10): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+        (11): Transformer(
+          (layer_norm1): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (multi_headed_attention): MultiheadedAttention(
+            (key): Linear(in_features=768, out_features=768, bias=False)
+            (query): Linear(in_features=768, out_features=768, bias=False)
+            (value): Linear(in_features=768, out_features=768, bias=False)
+            (proj): Linear(in_features=768, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layer_norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): FeedForward(
+            (linear1): Linear(in_features=768, out_features=3072, bias=False)
+            (activation): GELU(approximate='none')
+            (linear2): Linear(in_features=3072, out_features=768, bias=False)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+        )
+      )
+      (layer_norm_final): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      (lm_head): Linear(in_features=768, out_features=50304, bias=False)
+    )
+  )
+)
+2025-01-19 16:49:31.613 | INFO     | __main__:<module>:203 - Training model with 123,587,328 parameters for max_steps=20,000 on total_training_tokens=10,485,760,000
+2025-01-19 16:49:31.613 | INFO     | __main__:<module>:206 - Decayed parameter tensors: 74, with 124,354,560 parameters
+2025-01-19 16:49:31.613 | INFO     | __main__:<module>:207 - Non-decayed parameter tensors: 25, with 19,200 parameters
+[rank0]:W0119 16:49:31.632000 3840017 torch/_logging/_internal.py:1081] [0/0] Profiler function <class 'torch.autograd.profiler.record_function'> will be ignored
+2025-01-19 16:49:41.856 | INFO     | __main__:<module>:265 - Step 0/20,000 loss: 10.9461 (T) 10.9439 (V) | lr=0.0e+00
+2025-01-19 16:49:41.857 | INFO     | __main__:<module>:287 - Saving model to /home/v-youransun/repgpt/model... 
