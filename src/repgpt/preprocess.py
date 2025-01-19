@@ -51,8 +51,11 @@ if __name__ == "__main__":
     total_shards = args.total_shards
     num_proc_load = args.num_proc
     num_proc_tokenize = args.num_proc
-    data_dir = args.data_dir
-    base_dir = os.path.join(data_dir, "/input/data/")
+    # data_dir = args.data_dir
+    data_dir = os.path.expanduser("~/repgpt")
+    print(f"data_dir: {data_dir}")
+    base_dir = os.path.join(data_dir, "input/data/")
+    print(f"base_dir: {base_dir}")
     os.makedirs(os.path.join(base_dir, "train"), exist_ok=True)
     os.makedirs(os.path.join(base_dir, "eval"), exist_ok=True)
 

@@ -1,5 +1,5 @@
 """
-References: 
+References:
 Andrej Karpathy's training code: https://github.com/karpathy/nanoGPT/blob/master/train.py
 """
 
@@ -36,6 +36,15 @@ class GPT2Config:
 
 
 _MODEL_CONFIGS = {"124M": GPT2Config}
+
+
+tik = time.time()
+def time_elapsed():
+    global tik
+    tok = time.time()
+    deltat = tok-tik
+    tik = tok
+    return deltat
 
 if __name__ == "__main__":
     start = time.time()
@@ -92,7 +101,8 @@ if __name__ == "__main__":
     local_run = os.environ.get("SM_CHANNEL_TRAIN") is None
 
     # Setup directories
-    data_dir = "/tmp/data/" if local_run else "/opt/ml/"
+    # data_dir = "/tmp/data/" if local_run else "/opt/ml/"
+    data_dir = os.path.expanduser("~/repgpt")
     # Create a sensible job name unless running on SageMaker, which will handle this on it's own.
     job_name = f"gpt2-training-{args.model_size}-{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}" if local_run else ""
     train_dir = os.path.join(data_dir, "input/data/train")

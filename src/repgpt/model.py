@@ -1,5 +1,5 @@
 """
-References: 
+References:
 1. The original source code from openAI: https://github.com/openai/gpt-2/blob/master/src/model.py
 2. Andrej Karpathy's implementation: https://github.com/karpathy/nanoGPT/blob/master/model.py
 3. HuggingFace's implementation: https://github.com/huggingface/transformers/blob/main/src/transformers/models/gpt2/modeling_gpt2.py
@@ -98,8 +98,9 @@ class Transformer(nn.Module):
         self.feed_forward = FeedForward(config.n_embd, config.dropout, config.bias)
 
     def forward(self, x):
-        x = x + self.multi_headed_attention(self.layer_norm1(x))
-        x = x + self.feed_forward(self.layer_norm2(x))
+        x = -x + self.multi_headed_attention(self.layer_norm1(x))
+        x = -x + self.feed_forward(self.layer_norm2(x))
+        # input("neg attn ff?")
         return x
 
 class GPT2(nn.Module):
